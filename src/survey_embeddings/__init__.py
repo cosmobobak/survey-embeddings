@@ -49,10 +49,12 @@ def main() -> None:
 
     # 3. Compute pairwise similarities between surveys
     over_threshold: list[tuple[float, str, str, int, int, str, str]] = []
+    sims: dict[tuple[str, str], np.ndarray] = {}
     for a, b in combinations(SURVEYS, 2):
         qa, ea = embedding_map[a]
         qb, eb = embedding_map[b]
         sim = ea @ eb.T
+        sims[(a, b)] = sim
         print(f"\n=== {a} ←→ {b} ===")
         # Items with the strongest match first
         for i in sim.max(axis=1).argsort()[::-1]:
@@ -84,3 +86,30 @@ def main() -> None:
         builtins.print(
             f"| {sim:.3f} | {d1} #{i} | {cell(q1, d1)} | {d2} #{j} | {cell(q2, d2)} |"
         )
+
+    # 5. All-to-all, bold marks >= THRESHOLD.
+    builtins.print("\n## Appendix: all-to-all similarities\n")
+    builtins.print(f"Bold values are at or above the threshold ({THRESHOLD}).")
+    for (a, b), sim in sims.items():
+        qa = embedding_map[a][0]
+        builtins.print(f"\n### {a.capitalize()} × {b}\n")
+        builtins.print(
+            f"| {a} \\ {b} | "
+            + " | ".join(str(j + 1) for j in range(sim.shape[1]))
+            + " |"
+        )
+        builtins.print("|---|" + "---:|" * sim.shape[1])
+        for i, row in enumerate(sim):
+            # round() + 0.0 turns -0.00 into 0.00
+            values = (
+                f"**{v:.2f}**" if v >= THRESHOLD else f"{round(v, 2) + 0.0:.2f}"
+                for v in row
+            )
+            builtins.print(f"| {i + 1} | " + " | ".join(values) + " |")
+
+    # Item key
+    builtins.print("\n### Item key\n")
+    for survey in SURVEYS:
+        builtins.print(f"\n**{survey.capitalize()}**\n")
+        for n, q in enumerate(embedding_map[survey][0], start=1):
+            builtins.print(f"{n}. {cell(q, survey)}")
