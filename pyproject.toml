@@ -1,0 +1,18 @@
+[project]
+name = "survey-embeddings"
+version = "1.0.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [{ name = "cosmo", email = "cosmo@asteri.sm" }]
+requires-python = ">=3.14"
+dependencies = [
+    "rich>=15.0.0",
+    "sentence-transformers>=6.1.0",
+]
+
+[project.scripts]
+survey-embeddings = "survey_embeddings:main"
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13.0"]
+build-backend = "uv_build"
