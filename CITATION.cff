@@ -1,0 +1,55 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "survey-embeddings"
+abstract: >-
+  Text embedding comparisons for inventories of Depression (BDI-II),
+  Gaslight, and Dependency, using Qwen3-Embedding to compute
+  inter-survey item similarities.
+authors:
+  - given-names: Cosmo
+    family-names: Bobak
+    alias: cosmobobak
+    email: surveyembeddings@asteri.sm
+license: AGPL-3.0-or-later
+version: 1.0.0
+date-released: 2026-10-05
+repository-code: "https://github.com/cosmobobak/survey-embeddings"
+keywords:
+  - text embeddings
+  - psychometrics
+  - surveys
+  - Qwen3-Embedding
+references:
+  - type: article
+    title: "Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models"
+    authors:
+      - family-names: Zhang
+        given-names: Yanzhao
+      - family-names: Li
+        given-names: Mingxin
+      - family-names: Long
+        given-names: Dingkun
+      - family-names: Zhang
+        given-names: Xin
+      - family-names: Lin
+        given-names: Huan
+      - family-names: Yang
+        given-names: Baosong
+      - family-names: Xie
+        given-names: Pengjun
+      - family-names: Yang
+        given-names: An
+      - family-names: Liu
+        given-names: Dayiheng
+      - family-names: Lin
+        given-names: Junyang
+      - family-names: Huang
+        given-names: Fei
+      - family-names: Zhou
+        given-names: Jingren
+    journal: "arXiv preprint arXiv:2506.05176"
+    year: 2025
+    identifiers:
+      - type: other
+        value: "arXiv:2506.05176"

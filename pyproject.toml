@@ -3,7 +3,9 @@ name = "survey-embeddings"
 version = "1.0.0"
 description = "Add your description here"
 readme = "README.md"
-authors = [{ name = "cosmo", email = "cosmo@asteri.sm" }]
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE"]
+authors = [{ name = "cosmo", email = "surveyembeddings@asteri.sm" }]
 requires-python = ">=3.14"
 dependencies = [
     "rich>=15.0.0",
