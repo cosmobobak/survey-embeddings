@@ -1,3 +1,4 @@
+import builtins
 from itertools import combinations
 from pathlib import Path
 
@@ -67,9 +68,19 @@ def main() -> None:
                 s = row[j]
                 over_threshold.append((s, qai, qbj, i, j, a, b))
 
-    # 4. Lastly, print every pair that crossed THRESHOLD
-    print("\nOver threshold:")
+    # 4. Lastly, print every pair that crossed THRESHOLD.
+    def cell(text: str, survey: str) -> str:
+        # Depression items are "Label: 0 ... 3 ..."; keep just the label
+        if survey == "depression":
+            text = text.split(":", 1)[0]
+        return text.replace("|", "\\|")
+
+    builtins.print("\n## Over threshold\n")
+    builtins.print("| Similarity | Item A | Question A | Item B | Question B |")
+    builtins.print("|---:|---|---|---|---|")
     for sim, q1, q2, i, j, d1, d2 in sorted(
         over_threshold, key=lambda x: x[0], reverse=True
     ):
-        print(f"{sim:.3f} {d1} #{i} / {d2} #{j}\n · {q1}\n · {q2}")
+        builtins.print(
+            f"| {sim:.3f} | {d1} #{i} | {cell(q1, d1)} | {d2} #{j} | {cell(q2, d2)} |"
+        )

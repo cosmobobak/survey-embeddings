@@ -20,6 +20,8 @@ uv run survey-embeddings
 If you wish to edit the code (say, to alter the similarity threshold), you may do so by making changes
 in `src/survey_embeddings/__init__.py`.
 
+Sample output is provided in [similarity-0.3-qwen3-0.6B.md](/similarity-0.3-qwen3-0.6B.md).
+
 Model citation:
 
 ```cite
