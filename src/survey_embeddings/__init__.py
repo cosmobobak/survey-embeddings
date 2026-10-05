@@ -66,7 +66,7 @@ def main() -> None:
                 qai = qa[i]
                 qbj = qb[j]
                 s = row[j]
-                over_threshold.append((s, qai, qbj, i, j, a, b))
+                over_threshold.append((s, qai, qbj, i + 1, j + 1, a, b))
 
     # 4. Lastly, print every pair that crossed THRESHOLD.
     def cell(text: str, survey: str) -> str:
